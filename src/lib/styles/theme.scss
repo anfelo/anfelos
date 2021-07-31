@@ -1,0 +1,25 @@
+$light-blue: #41c8f1;
+$pale-yellow: #f1c241;
+$pink: #e17cdf;
+$light-pink: #f0c6f1;
+$dark-pink: #db1d59;
+$light-green: #94fbb4;
+$pale-green: #79cd98;
+$purple: #5f3ff5;
+$dark-purple: #3d268e;
+$deep-dark-purple: #363636;
+$orange: #ffad1f;
+$dark-orange: #f45d22;
+$grey: #5e5e5e;
+
+// Update Bulma's global variables
+$family-sans-serif: 'Montserrat', sans-serif;
+$family-sans-serif-title: 'Bree Serif', sans-serif;
+$family-secondary: $family-sans-serif-title;
+$primary: $dark-orange;
+$info: $light-blue;
+$warning: $pale-yellow;
+$danger: $dark-pink;
+$success: $light-green;
+$link: $pink;
+$dark: $deep-dark-purple;
