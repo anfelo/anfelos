@@ -1,22 +1,38 @@
-<script context="module">
-  export async function preload(page, session) {
-    const res = await this.fetch("about.json");
-    const data = await res.json();
-    if (res.status === 200) {
+<script context="module" lang="ts">
+  import type { Load } from '@sveltejs/kit';
+
+  export const load: Load = async ({ fetch }) => {
+    const res = await fetch('/about.json');
+
+    if (res.ok) {
+      const bio = await res.json();
+
       return {
-        bioEntry: data
+        props: { bio }
       };
-    } else {
-      this.error(res.status, data.message);
     }
-  }
+
+    const { message } = await res.json();
+
+    return {
+      error: new Error(message)
+    };
+  };
 </script>
 
-<script>
-  import TECH_TAGS from "../constants/tags";
-  export let bioEntry;
-  const profileImage = bioEntry.profileImage.fields;
-  const tags = TECH_TAGS;
+<script lang="ts">
+  import tags from '$lib/constants/tags';
+  import { loadImage } from '$lib/helpers/utils';
+
+  export let bio;
+
+  async function loadFiles() {
+    if (bio.avatarUrl) {
+      await loadImage(bio.avatarUrl);
+    }
+  }
+
+  loadFiles();
 </script>
 
 <style>
@@ -69,10 +85,10 @@
     </div>
     <div class="column">
       <div class="picture-container">
-        <img src={profileImage.file.url} alt={profileImage.title} />
+        <img src={bio.avatarUrl} alt="Anfelo Profile Pic" />
       </div>
       <h1 class="title">About Me</h1>
-      <p>{bioEntry.bio}</p>
+      <p>{bio.bio}</p>
     </div>
   </div>
   <div class="contact-info">

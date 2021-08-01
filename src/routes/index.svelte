@@ -1,5 +1,5 @@
-<script>
-  import Orbits from "$lib/components/orbits/Orbits.svelte";
+<script lang="ts">
+  import Orbits from '$lib/components/orbits/Orbits.svelte';
 </script>
 
 <style>

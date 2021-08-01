@@ -1,6 +1,6 @@
-<script>
-  import { theme } from "$lib/store/stores.ts";
-  export let segment;
+<script lang="ts">
+  import { theme } from "$lib/store/stores";
+  import { page } from '$app/stores';
   export let isDark = true;
   let isNavbarOpen = false;
   function handleBurgerClick(e) {
@@ -15,12 +15,12 @@
 
 <style lang="scss">
   @import "../../styles/theme.scss";
-
-  [aria-current] {
-    position: relative;
-    display: inline-block;
+  .navbar-item {
+    text-decoration: none;
+    padding: 1em 0.5em 0;
+    display: block;
   }
-  [aria-current]::after {
+  .navbar-item.active::after {
     position: absolute;
     content: "";
     width: calc(100% - 1em);
@@ -28,11 +28,6 @@
     background-color: $primary;
     display: block;
     bottom: -1px;
-  }
-  .navbar-item {
-    text-decoration: none;
-    padding: 1em 0.5em 0;
-    display: block;
   }
   .navbar-brand .navbar-item {
     display: flex;
@@ -52,7 +47,7 @@
     .navbar-item {
       text-align: center;
     }
-    [aria-current]::after {
+    .navbar-item.active::after {
       display: none;
     }
   }
@@ -89,29 +84,29 @@
       <div class="navbar-end">
         <a
           class="navbar-item"
-          aria-current={segment === undefined ? 'page' : undefined}
-          href=".">
+          class:active={$page.path === '/'}
+          href="/">
           home
         </a>
         <a
           class="navbar-item"
-          rel="prefetch"
-          aria-current={segment === 'about' ? 'page' : undefined}
-          href="about">
+          sveltekit:prefetch
+          class:active={$page.path === '/about'}
+          href="/about">
           about
         </a>
         <a
           class="navbar-item"
-          rel="prefetch"
-          aria-current={segment === 'work' ? 'page' : undefined}
-          href="work">
+          sveltekit:prefetch
+          class:active={$page.path === '/work'}
+          href="/work">
           work
         </a>
         <a
           class="navbar-item"
-          rel="prefetch"
-          aria-current={segment === 'blog' ? 'page' : undefined}
-          href="blog">
+          sveltekit:prefetch
+          class:active={$page.path === '/blog'}
+          href="/blog">
           blog
         </a>
         <div class="navbar-item has-dropdown is-hoverable">

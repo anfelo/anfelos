@@ -1,6 +1,6 @@
-<script>
-  import { onMount } from "svelte";
-  import runOrbitsAnimation from "$lib/helpers/orbits.ts";
+<script lang="ts">
+  import { onMount } from 'svelte';
+  import runOrbitsAnimation from '$lib/helpers/orbits';
   onMount(async () => {
     runOrbitsAnimation();
   });

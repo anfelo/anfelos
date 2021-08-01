@@ -1,5 +1,6 @@
 {
-  "name": "~TODO~",
+  "name": "anfelos",
+  "description": "Hi, Im Andres Osorio and this is my web portfolio. You'll find here information about myself, my career and my projects",
   "version": "0.0.1",
   "scripts": {
     "dev": "svelte-kit dev",
