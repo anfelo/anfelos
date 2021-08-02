@@ -21,6 +21,7 @@
 </script>
 
 <script lang="ts">
+  import { onMount } from 'svelte';
   import tags from '$lib/constants/tags';
   import { loadImage } from '$lib/helpers/utils';
 
@@ -32,7 +33,9 @@
     }
   }
 
-  loadFiles();
+  onMount(() => {
+    loadFiles();
+  });
 </script>
 
 <style>

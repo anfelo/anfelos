@@ -1,6 +1,6 @@
 import { db, storage } from './firebase';
 
-export async function getBio(): Promise<{status: number, body: any}> {
+export async function getBio(): Promise<{ status: number; body: any }> {
   const bioRef = db.collection('bio').doc('anfelo');
   const bioDoc = await bioRef.get();
   const data = bioDoc.data();
@@ -15,4 +15,19 @@ export async function getBio(): Promise<{status: number, body: any}> {
       body: data
     };
   }
+}
+
+export async function getProjects(): Promise<{ status: number; body: any }> {
+  const projectsRef = db.collection('projects');
+  const querySnapshot = await projectsRef.get();
+  const projectsData = [];
+
+  querySnapshot.forEach((doc) => {
+    projectsData.push(doc.data());
+  });
+
+  return {
+    status: 200,
+    body: projectsData
+  };
 }

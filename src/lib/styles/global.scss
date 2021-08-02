@@ -19,6 +19,7 @@ body.dark-theme {
   --btn-shadow: white;
   --code-bg: #444;
   --code-text-color: rgb(171, 178, 191);
+  --card-bg: #38444d;
 }
 
 body.light-theme {
@@ -31,6 +32,7 @@ body.light-theme {
   --btn-shadow: black;
   --code-bg: #222;
   --code-text-color: rgb(171, 178, 191);
+  --card-bg: #38444d;
 }
 
 h1,
@@ -170,7 +172,7 @@ body.dark-theme {
   }
 
   .card {
-    background-color: var(--code-bg);
+    background-color: var(--card-bg);
     color: var(--text-color);
   }
 

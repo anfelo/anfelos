@@ -25,7 +25,7 @@
     content: "";
     width: calc(100% - 1em);
     height: 2px;
-    background-color: $primary;
+    background-color: $link;
     display: block;
     bottom: -1px;
   }
