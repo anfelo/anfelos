@@ -1,9 +1,12 @@
 import type { RequestHandler } from '@sveltejs/kit';
+
 import * as fromApi from '$lib/services/api';
 
-// GET /work.json
-export const get: RequestHandler<any> = async () => {
-  const response = await fromApi.getProjects();
+// GET /blog/[slug].json
+export const get: RequestHandler<any> = async (req) => {
+  const { slug } = req.params;
+
+  const response = await fromApi.getBlogArticle(slug);
 
   if (response.status === 404) {
     return { body: {} };

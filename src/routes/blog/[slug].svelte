@@ -1,0 +1,71 @@
+<script context="module" lang="ts">
+  import type { Load } from '@sveltejs/kit';
+  export const load: Load = async ({ fetch, page }) => {
+    const res = await fetch(`blog/${page.params.slug}.json`);
+
+    if (res.ok) {
+      const post = await res.json();
+
+      return {
+        props: { post }
+      };
+    }
+
+    const { message } = await res.json();
+
+    return {
+      error: new Error(message)
+    };
+  };
+</script>
+
+<script>
+  import * as fromParsers from '$lib/helpers/parsers';
+  export let post;
+</script>
+
+<style>
+  .article {
+    margin-bottom: 25px;
+  }
+  .article .article-date {
+    text-transform: uppercase;
+    font-size: 0.8em;
+    font-weight: bold;
+  }
+  .topics-list {
+    display: flex;
+    margin: 0;
+    list-style: none;
+    align-items: center;
+  }
+  .topics-list .topic-img {
+    width: 20px;
+    margin: 0 5px 0 0;
+  }
+  .topic-img img {
+    width: 100%;
+  }
+</style>
+
+<svelte:head>
+  <title>{post.title}</title>
+</svelte:head>
+
+<div class="container">
+  <div class="article">
+    <!-- <ul class="topics-list">{topics}</ul> -->
+    <ul class="topics-list">
+      {#each post.topics as topic}
+        <li key={topic} class="topic-img">
+          <img src={`/img/${topic}.svg`} alt="" />
+        </li>
+      {/each}
+    </ul>
+    <span class="article-date">{fromParsers.parseDate(post.publishedOn)}</span>
+    <h2 class="article-title title">{post.title}</h2>
+    <div class="article-content">
+      {@html post.html}
+    </div>
+  </div>
+</div>

@@ -20,6 +20,7 @@ body.dark-theme {
   --code-bg: #444;
   --code-text-color: rgb(171, 178, 191);
   --card-bg: #38444d;
+  --card-active-bg: #45535e;
 }
 
 body.light-theme {
@@ -167,7 +168,7 @@ body.dark-theme .subtitle {
 
 body.dark-theme {
   .box {
-    background-color: var(--code-bg);
+    background-color: var(--card-bg);
     color: var(--text-color);
   }
 
@@ -191,8 +192,27 @@ body.dark-theme {
 @media (max-width: 768px) {
   body.dark-theme {
     .navbar-menu {
-      background-color: var(--code-bg);
+      background-color: var(--card-bg);
       .navbar-item {
+        color: var(--text-color);
+      }
+      .navbar-item:hover {
+        background-color: var(--card-active-bg);
+        color: var(--text-color);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  body.dark-theme {
+    .navbar-menu {
+      background-color: var(--card-bg);
+      .navbar-item {
+        color: var(--text-color);
+      }
+      .navbar-item:hover {
+        background-color: var(--card-active-bg);
         color: var(--text-color);
       }
     }
