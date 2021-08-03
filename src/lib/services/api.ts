@@ -1,18 +1,4 @@
 import { db, storage } from './firebase';
-import marked from 'marked';
-import hljs from 'highlight.js';
-
-marked.setOptions({
-  highlight: function (code, lang) {
-    if (typeof lang === 'undefined') {
-      return hljs.highlightAuto(code).value;
-    } else if (lang === 'nohighlight') {
-      return code;
-    } else {
-      return hljs.highlight(lang, code).value;
-    }
-  }
-});
 
 export async function getBio(): Promise<{ status: number; body: any }> {
   const bioRef = db.collection('bio').doc('anfelo');
@@ -80,8 +66,7 @@ export async function getBlogArticle(
       status: 200,
       body: {
         ...data,
-        publishedOn: data.publishedOn.toDate(),
-        html: marked(data.content)
+        publishedOn: data.publishedOn.toDate()
       }
     };
   }
