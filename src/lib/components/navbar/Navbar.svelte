@@ -1,15 +1,17 @@
 <script lang="ts">
   import { theme } from "$lib/store/stores";
   import { page } from '$app/stores';
+  import ToggleSwitch from '$lib/components/inputs/ToggleSwitch.svelte';
   export let isDark = true;
   let isNavbarOpen = false;
   function handleBurgerClick(e) {
     e.preventDefault();
     isNavbarOpen = !isNavbarOpen;
   }
-  function handleThemeChange(e, value) {
+  function handleThemeChange(e) {
     e.preventDefault();
-    theme.update(v => value);
+    const newValue = e.detail.checked ? 'dark-theme' : 'light-theme';
+    theme.update(v => newValue);
   }
 </script>
 
@@ -110,25 +112,10 @@
           blog
         </a>
         <div class="navbar-item has-dropdown is-hoverable">
-          <div class="navbar-icon">
-            <img
-              src={`/img/${isDark ? 'switches-dark.png' : 'switches-light.png'}`}
-              alt="" />
-          </div>
-          <div class="navbar-dropdown">
-            <a
-              href="."
-              on:click={e => handleThemeChange(e, 'dark-theme')}
-              class="navbar-item">
-              dark
-            </a>
-            <a
-              href="."
-              on:click={e => handleThemeChange(e, 'light-theme')}
-              class="navbar-item">
-              light
-            </a>
-          </div>
+          <ToggleSwitch
+            checked={isDark}
+            isThemeToggle={true}
+            on:change={handleThemeChange} />
         </div>
       </div>
     </div>

@@ -190,6 +190,12 @@ body.dark-theme {
 }
 
 @media (max-width: 768px) {
+  .navbar-menu {
+    .navbar-item {
+      text-align: center;
+    }
+  }
+
   body.dark-theme {
     .navbar-menu {
       background-color: var(--card-bg);
@@ -205,6 +211,12 @@ body.dark-theme {
 }
 
 @media screen and (max-width: 1023px) {
+  .navbar-menu {
+    .navbar-item {
+      text-align: center;
+    }
+  }
+
   body.dark-theme {
     .navbar-menu {
       background-color: var(--card-bg);
@@ -212,7 +224,7 @@ body.dark-theme {
         color: var(--text-color);
       }
       .navbar-item:hover {
-        background-color: var(--card-active-bg);
+        background-color: var(--card-bg);
         color: var(--text-color);
       }
     }

@@ -61,6 +61,14 @@ export async function getBlogArticle(
   const bioDoc = await bioRef.get();
   const data = bioDoc.data();
 
+  if (data.slug) {
+    const storageRef = storage.ref(`articles/${data.slug}.md`);
+    const contentUrl = await storageRef.getDownloadURL();
+    const contentRes = await fetch(contentUrl);
+    const contentString = await streamToString(contentRes.body);
+    data.content = contentString;
+  }
+
   if (data !== null) {
     return {
       status: 200,
@@ -70,4 +78,13 @@ export async function getBlogArticle(
       }
     };
   }
+}
+
+function streamToString(stream) {
+  const chunks = [];
+  return new Promise((resolve, reject) => {
+    stream.on('data', (chunk) => chunks.push(Buffer.from(chunk)));
+    stream.on('error', (err) => reject(err));
+    stream.on('end', () => resolve(Buffer.concat(chunks).toString('utf8')));
+  });
 }

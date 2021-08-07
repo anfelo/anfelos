@@ -21,6 +21,8 @@
 
 <script>
   import * as fromParsers from '$lib/helpers/parsers';
+  import Markdown from '$lib/components/markdown/Markdown.svelte';
+
   export let post;
 </script>
 
@@ -54,7 +56,6 @@
 
 <div class="container">
   <div class="article">
-    <!-- <ul class="topics-list">{topics}</ul> -->
     <ul class="topics-list">
       {#each post.topics as topic}
         <li key={topic} class="topic-img">
@@ -65,7 +66,7 @@
     <span class="article-date">{fromParsers.parseDate(post.publishedOn)}</span>
     <h2 class="article-title title">{post.title}</h2>
     <div class="article-content">
-      {@html post.html}
+      <Markdown markdown={post.content} />
     </div>
   </div>
 </div>
