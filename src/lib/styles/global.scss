@@ -10,14 +10,14 @@ body {
 }
 
 body.dark-theme {
-  --bg-color: #15202B;
+  --bg-color: #15202b;
   --text-color: white;
   --text-hover-color: #ddd;
   --h-color: white;
   --btn-color: white;
   --btn-border: white;
   --btn-shadow: white;
-  --code-bg: #444;
+  --code-bg: #243647;
   --code-text-color: rgb(171, 178, 191);
   --card-bg: #38444d;
   --card-active-bg: #45535e;
@@ -44,11 +44,13 @@ h5,
 h6 {
   font-family: $family-secondary;
   color: var(--h-color);
+  font-weight: bold !important;
 }
 
 code,
 pre {
   background-color: var(--code-bg) !important;
+  font-family: $family-mono;
 }
 
 blockquote {
@@ -167,6 +169,10 @@ body.dark-theme .subtitle {
 }
 
 body.dark-theme {
+  a:hover {
+    color: lighten($link, 20%);
+  }
+
   .box {
     background-color: var(--card-bg);
     color: var(--text-color);
@@ -240,4 +246,35 @@ body.dark-theme {
 
 .has-background-dark {
   background-color: var(--bg-color) !important;
+}
+
+.button {
+  position: relative;
+  border: none;
+  border-bottom: 4px solid;
+  border-radius: $radius-large;
+  overflow: hidden;
+  transition: all 0.2s;
+
+  &.is-primary {
+    border-color: lighten($primary, 20%);
+  }
+  &.is-warning {
+    border-color: lighten($warning, 20%);
+  }
+  &.is-danger {
+    border-color: lighten($danger, 20%);
+  }
+  &.is-link {
+    border-color: lighten($link, 20%);
+  }
+  &.is-info {
+    border-color: lighten($info, 20%);
+  }
+  &.is-success {
+    border-color: lighten($success, 20%);
+  }
+  &.is-dark {
+    border-color: lighten($success, 20%);
+  }
 }

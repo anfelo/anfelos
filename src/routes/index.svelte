@@ -23,7 +23,7 @@
       <div class="container has-text-centered">
         <h1 class="title">Andres Osorio</h1>
         <p class="subtitle">Entrepreneur ● Software Engineer ● Home Barista</p>
-        <a rel="prefetch" href="about" class="button button-callout is-link">
+        <a rel="prefetch" href="about" class="button button-callout is-link slide-left">
           lets have a coffee
         </a>
       </div>

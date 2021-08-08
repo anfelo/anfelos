@@ -1,3 +1,7 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url(https://fonts.googleapis.com/css?family=Poppins:700);
+@import url(https://fonts.googleapis.com/css?family=Fira+Mono);
+
 $light-blue: #41c8f1;
 $pale-yellow: #f1c241;
 $pink: #e17cdf;
@@ -7,14 +11,16 @@ $light-green: #94fbb4;
 $pale-green: #17bf63;
 $purple: #794bc4;
 $dark-purple: #3d268e;
-$deep-dark-purple: #363636;
+$deep-dark-purple: #243647;
 $orange: #ffad1f;
 $dark-orange: #f45d22;
 $grey: #5e5e5e;
+$dark-grey: #363636;
 
 // Update Bulma's global variables
 $family-sans-serif: 'Montserrat', sans-serif;
-$family-sans-serif-title: 'Bree Serif', sans-serif;
+$family-sans-serif-title: 'Poppins', sans-serif;
+$family-mono: 'Fira Mono', monospace;
 $family-secondary: $family-sans-serif-title;
 $primary: $purple;
 $info: $orange;
@@ -22,4 +28,4 @@ $warning: $pale-yellow;
 $danger: $dark-pink;
 $success: $light-green;
 $link: $dark-orange;
-$dark: $deep-dark-purple;
+$dark: $dark-grey;
